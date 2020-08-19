@@ -1,0 +1,14 @@
+.container {
+    background-color: bisque;
+}
+.img-container {
+    width: 225px;
+    height: 225px;
+    background-image: url("@assets/bus-stop-marker.png");
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* todo: 저기 빨간줄 신경쓰이는거 처리하기. */
