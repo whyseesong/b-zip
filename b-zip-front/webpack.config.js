@@ -2,15 +2,20 @@ const webpack = require('webpack');
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CaseSensitivePath = require('case-sensitive-paths-webpack-plugin');
+const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
 const FAVICON_PNG = 'favicon.png';
 
 module.exports = {
     mode: 'none',
-    entry: './src/index.js',
+    entry: {
+        main: './src/index.tsx',
+        // main2: './src/main2.tsx',
+    },
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
     },
     devServer: {
         port: 9000,
@@ -34,9 +39,10 @@ module.exports = {
         ]
     },
     plugins: [
+        new CaseSensitivePath(),
         new HtmlWebpackPlugin({
             inject: true,
-            title: 'index',
+            title: 'b-zip!',
             template: 'index.html',
             favicon: FAVICON_PNG,
             minify: false,
@@ -45,4 +51,8 @@ module.exports = {
             ENVIRONMENT_CONSTANT: 'constant_value',
         }),
     ],
+    resolve: {
+        plugins: [new TsconfigPathsPlugin( {configFile: './tsconfig.json'})],
+        extensions: ['.ts', '.tsx', '.js'],
+    }
 };
