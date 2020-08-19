@@ -1,10 +1,8 @@
-import React from "react";
-import Marker from "@components/Marker";
+import React, { ReactElement } from 'react';
+import Marker from '@components/Marker';
 
-const App = () => {
-    return (
-        <Marker/>
-    )
+const App = (): ReactElement => {
+  return <Marker />;
 };
 
 export default App;
