@@ -10,5 +10,10 @@
     align-items: center;
     justify-content: center;
 }
+.svg-container {
+    width: 500px;
+    height: 500px;
+    background-image: url("@assets/bus-svg.svg");
+}
 
 /* todo: 저기 빨간줄 신경쓰이는거 처리하기. */

@@ -7,6 +7,7 @@ const Marker = (): ReactElement => {
       <div>this is marker!</div>
       <div className="container">css style test</div>
       <div className="img-container">css image import test</div>
+      <div className="svg-container">svg img import test</div>
     </div>
   );
 };
