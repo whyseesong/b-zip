@@ -1,9 +1,9 @@
-const express = require("express");
+import express from "express";
+import { searchPlaces, testPlaces } from "../controllers/search";
+
 const router = express.Router();
 
-router.get("/", (req, res, next) => {
-  res.json({ message: "test for search" });
-  next();
-});
+router.get("/places", searchPlaces);
+router.get("/test", testPlaces);
 
 module.exports = router;

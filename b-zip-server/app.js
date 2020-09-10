@@ -1,17 +1,15 @@
 require("dotenv").config();
 
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const logger = require("morgan");
-const cors = require("cors");
+import express from "express";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import logger from "morgan";
+import cors from "cors";
 
-const busStopRouter = require("./routes/busStop");
-const searchRouter = require("./routes/search");
+import busStopRouter from "./routes/busStop";
+import searchRouter from "./routes/search";
 
 const app = express();
-const port = process.env.PORT || 4000;
-
 const { MONGO_URL, MONGO_DATABASE, MONGO_USER_ID, MONGO_USER_PW } = process.env;
 
 app.use(cors());
@@ -24,7 +22,6 @@ app.use(bodyParser.json());
 
 // node.js native promise use
 mongoose.Promise = global.Promise;
-
 // connect mongoose
 mongoose
   .connect(`mongodb://${MONGO_URL}/${MONGO_DATABASE}`, {
@@ -32,6 +29,7 @@ mongoose
     user: MONGO_USER_ID,
     pass: MONGO_USER_PW,
     useNewUrlParser: true,
+    useUnifiedTopology: true,
   })
   .then(() => console.log("Successfully connected to mongoDB!"))
   .catch((e) => console.error.bind(console, "connection error: "));
@@ -40,5 +38,20 @@ mongoose
 app.use("/busStop", busStopRouter);
 app.use("/search", searchRouter);
 
-// listen server
-app.listen(port, () => console.log(`Server listening on port ${port}`));
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  next(createError(404));
+});
+
+// error handler
+app.use((err, req, res, next) => {
+  let apiError = err;
+  if (!err.status) {
+    apiError = createError(err);
+  }
+  res.locals.message = apiError.message;
+  res.locals.error = process.env.NODE_ENV === "development" ? apiError : {};
+  return res.status(apiError.status).json({ message: apiError.message });
+});
+
+module.exports = app;

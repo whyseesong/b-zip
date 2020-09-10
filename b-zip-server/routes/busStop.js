@@ -1,9 +1,8 @@
-const express = require("express");
+import express from "express";
+import { index } from "../controllers/busStop";
+
 const router = express.Router();
 
-router.get("/", (req, res, next) => {
-  res.json({ message: "test for connect" });
-  next();
-});
+router.get("/", index);
 
 module.exports = router;
