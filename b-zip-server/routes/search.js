@@ -6,4 +6,4 @@ const router = express.Router();
 router.get("/places", searchPlaces);
 router.get("/test", testPlaces);
 
-module.exports = router;
+export default router;
