@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import './style.css';
 import HeaderTitle from '@components/Header/HeaderTitle';
 
 const Header: FunctionComponent = () => {
