@@ -5,6 +5,7 @@ import './default.css';
 import Marker from '@components/Marker';
 import StationCard from '@components/StationCard';
 import HeaderContainer from '@containers/HeaderContainer';
+import BusStopCard from '@components/BusStopCard';
 
 const App = (): ReactElement => {
   return (
@@ -12,6 +13,7 @@ const App = (): ReactElement => {
       <HeaderContainer />
       <Marker />
       <StationCard />
+      <BusStopCard />
     </div>
   );
 };
