@@ -1,4 +1,5 @@
 export type BusStopProps = {
+  typeOfBus: string;
   sortByTime: boolean;
   busStopName: string;
   busStopNumber: string;

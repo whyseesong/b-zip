@@ -45,6 +45,7 @@ const Column = styled.div`
 `;
 
 const BusStopCard = ({
+  typeOfBus,
   sortByTime,
   busStopName,
   busStopNumber,
@@ -60,7 +61,7 @@ const BusStopCard = ({
             ? `도보 ${walkingTime}분`
             : `버스 ${numberOfBuses}대`}
         </Sorted>
-        <BusIcon src="../src/assets/icon/bus-blue@2x.png" />
+        <BusIcon src={typeOfBus} />
       </Column>
       <Name>{busStopName}</Name>
       <Info>
@@ -71,6 +72,7 @@ const BusStopCard = ({
 };
 
 BusStopCard.defaultProps = {
+  typeOfBus: `../src/assets/icon/bus-blue@2x.png`,
   sortByTime: true,
   busStopName: `서울스퀘어앞`,
   busStopNumber: `02282`,

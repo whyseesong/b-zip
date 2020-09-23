@@ -14,7 +14,7 @@ const Template: Story<BusStopProps> = (args) => <BusStopCard {...args} />;
 
 export const Card = Template.bind({});
 Card.args = {
-  typeOfBuses: HTMLElement,
+  typeOfBus: `../src/assets/icon/bus-blue@2x.png`,
   sortByTime: true,
   busStopName: `서울스퀘어앞`,
   busStopNumber: `02282`,
