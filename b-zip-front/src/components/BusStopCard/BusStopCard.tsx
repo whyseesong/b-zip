@@ -8,6 +8,7 @@ const Container = styled.div`
   border: 0.063em solid #efefef;
   border-radius: 0.5em;
   padding: 0.75em 1em;
+  margin-bottom: 0.5em;
 `;
 
 const Sorted = styled.div`
@@ -35,18 +36,18 @@ const Info = styled.div`
 const BusIcon = styled.img`
   width: auto;
   height: 0.7em;
-  margin-left: auto;
+  margin-left: 0.1em;
 `;
 
 const Column = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
 
 const BusStopCard = ({
   typeOfBus,
-  sortByTime,
+  isSortByTime,
   busStopName,
   busStopNumber,
   direction,
@@ -57,11 +58,14 @@ const BusStopCard = ({
     <Container>
       <Column>
         <Sorted>
-          {sortByTime === true
-            ? `도보 ${walkingTime}분`
-            : `버스 ${numberOfBuses}대`}
+          {isSortByTime ? `도보 ${walkingTime}분` : `버스 ${numberOfBuses}대`}
         </Sorted>
-        <BusIcon src={typeOfBus} />
+        <div>
+          {typeOfBus.map((element) => (
+            // eslint-disable-next-line react/jsx-key
+            <BusIcon src={element} />
+          ))}
+        </div>
       </Column>
       <Name>{busStopName}</Name>
       <Info>
@@ -69,15 +73,6 @@ const BusStopCard = ({
       </Info>
     </Container>
   );
-};
-
-BusStopCard.defaultProps = {
-  typeOfBus: `../src/assets/icon/bus-blue@2x.png`,
-  sortByTime: true,
-  busStopName: `서울스퀘어앞`,
-  busStopNumber: `02282`,
-  direction: `남대문시장.회현역 방향`,
-  walkingTime: 1,
 };
 
 export default BusStopCard;

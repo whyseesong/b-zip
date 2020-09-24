@@ -1,6 +1,7 @@
 export type BusStopProps = {
-  typeOfBus: string;
-  sortByTime: boolean;
+  id: number;
+  typeOfBus: string[];
+  isSortByTime: boolean;
   busStopName: string;
   busStopNumber: string;
   direction: string;
