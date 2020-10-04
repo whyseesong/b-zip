@@ -1,14 +1,29 @@
 import React, { FunctionComponent } from 'react';
+import styled from 'styled-components';
+
 import HeaderTitle from '@components/Header/HeaderTitle';
+import HeaderArrow from '@components/Header/HeaderArrow';
+
+const HeaderContainer = styled.div`
+  height: 58px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Header: FunctionComponent = () => {
   return (
-    <div>
-      <HeaderTitle title={'01 직장입력'} isSelected={false} />
-      <HeaderTitle title={'02 버스정류장 선택'} isSelected={false} />
-      <HeaderTitle title={'03 버스경로 보기'} isSelected={false} />
-      <HeaderTitle title={'04 매물정보'} isSelected={false} />
-    </div>
+    <HeaderContainer>
+      <HeaderTitle title={'내 직장'} value={'11번가'} isSelected={false} />
+      <HeaderArrow color={'#373a3c'} />
+      <HeaderTitle title={'버스정류장 선택'} isSelected={false} />
+      <HeaderArrow color={'#516bfd'} />
+      <HeaderTitle title={'버스 선택'} isSelected={false} />
+      <HeaderArrow color={'#9b9c9d'} />
+      <HeaderTitle title={'*경로보기'} isSelected={false} />
+    </HeaderContainer>
   );
 };
 
