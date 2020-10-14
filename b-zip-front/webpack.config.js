@@ -4,6 +4,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePath = require('case-sensitive-paths-webpack-plugin');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const FAVICON_PNG = 'favicon.png';
 
@@ -50,6 +51,9 @@ module.exports = {
     new webpack.EnvironmentPlugin({
       ENVIRONMENT_CONSTANT: 'constant_value',
     }),
+    new Dotenv ({
+      path: '../.env',
+    })
   ],
   resolve: {
     plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })],
