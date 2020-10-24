@@ -1,8 +1,8 @@
 import express from "express";
-import { index } from "../controllers/busStop";
+import { getNearbyBusStop } from "../controllers/busStop";
 
 const router = express.Router();
 
-router.get("/", index);
+router.get("/nearby", getNearbyBusStop);
 
 export default router;

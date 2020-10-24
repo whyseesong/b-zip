@@ -4,9 +4,15 @@ const searchPlaces = (req, res, next) => {
   const result = kakaoApi.searchPlacesFromKakao(req.query.text);
   return res.json(result);
 };
-const testPlaces = (req, res, next) => {
-  console.log("test for place search");
-  return res.json({ message: "done" });
+const searchSubways = (req, res, next) => {
+  const result = kakaoApi.searchSubwaysFromKakao(req.query.text);
+  return res.json(result);
 };
 
-export { searchPlaces, testPlaces };
+const searchAll = (req, res, next) => {
+  const result = kakaoApi.searchAllFromKakao(req.query.text);
+  console.log(result);
+  return res.json(result);
+};
+
+export { searchPlaces, searchSubways, searchAll };
